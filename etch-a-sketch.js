@@ -3,8 +3,7 @@ let pixel_size = 8;
 let spacing = 1;
 let color = "green";
 
-
-const body = document.querySelector("body");
+const body = document.querySelector("#grid-container");
 body.setAttribute("style", "display: flex;");
 
 const grid = document.createElement("div");
@@ -12,7 +11,7 @@ grid.setAttribute("style", "display: flex;");
 body.appendChild(grid);
 
 function draw() {
-    color = "black";
+    color = "black";    
 }
 
 for (let i = 0; i < grid_size.x; i++) {
