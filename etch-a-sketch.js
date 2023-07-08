@@ -1,4 +1,5 @@
-let grid_size = {x: 16, y: 16};
+let square_grid = 8;
+let grid_size = {x: square_grid, y: square_grid};
 let pixel_size = 8;
 let spacing = 1;
 let color = "green";
@@ -11,7 +12,7 @@ grid.setAttribute("style", "display: flex;");
 body.appendChild(grid);
 
 function draw() {
-    color = "black";    
+    this.style["background-color"] = "black";
 }
 
 for (let i = 0; i < grid_size.x; i++) {
@@ -25,4 +26,3 @@ for (let i = 0; i < grid_size.x; i++) {
         grid.appendChild(div);
     }
 }
-
