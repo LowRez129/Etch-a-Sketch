@@ -1,24 +1,8 @@
 let square_grid = 8;
 let grid_size = {x: square_grid, y: square_grid};
 let pixel_size = 8;
-let spacing = 1;
+let spacing = 0.5;
 let color = "green";
-
-function adjustGridSize() {
-    const slider = document.querySelector("#grid-slider");
-    const grid_container = document.querySelector("#grid-container");
-    
-    slider.oninput = function () {
-        grid_size.x = this.value;
-        grid_size.y = this.value;
-
-        while (grid_container.hasChildNodes()) {
-            grid_container.removeChild(grid_container.children[0]);
-        }
-        draw();
-    }
-}
-
 
 function draw() {
     const grid_container = document.querySelector("#grid-container");
@@ -40,6 +24,25 @@ function draw() {
             div.setAttribute("style", `background-color: ${color}; padding: ${pixel_size}px; margin: ${spacing}px;`);
             grid.appendChild(div);
         }
+    }
+}
+
+function adjustGridSize() {
+    const slider_label = document.querySelector(".slider-label");
+    const slider = document.querySelector(".grid-slider");
+    const grid_container = document.querySelector("#grid-container");
+
+    slider_label.textContent = `${grid_size.x} x ${grid_size.y}`;
+    slider.oninput = function () {
+        grid_size.x = this.value;
+        grid_size.y = this.value;
+
+        slider_label.textContent = `${grid_size.x} x ${grid_size.y}`;
+
+        while (grid_container.hasChildNodes()) {
+            grid_container.removeChild(grid_container.children[0]);
+        }
+        draw();
     }
 }
 
