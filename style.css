@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+#grid-container {
+    width: 960px;
+    background-color: grey;
+}
