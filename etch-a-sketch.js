@@ -14,7 +14,7 @@ function draw() {
 
     for (let i = 0; i < grid_size.x; i++) {
         const grid = document.createElement("div");
-        grid.setAttribute("style", "display: flex; flex-direction: column;");
+        grid.setAttribute("style", "display: flex; flex-direction: column; flex-grow: 1;");
         grid_container.appendChild(grid);
         for (let i = 0; i < grid_size.y; i++) {
             const div = document.createElement("div");
