@@ -32,7 +32,7 @@ function adjustGridSize() {
     const slider = document.querySelector(".grid-slider");
     const grid_container = document.querySelector("#grid-container");
 
-    slider_label.textContent = `${grid_size.x} x ${grid_size.y}`;
+    slider_label.textContent = `${slider.value} x ${slider.value}`;
     slider.oninput = function () {
         grid_size.x = this.value;
         grid_size.y = this.value;
