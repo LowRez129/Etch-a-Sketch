@@ -17,7 +17,16 @@ function draw() {
             div.addEventListener("mousemove", function () {
                 this.style["background-color"] = "black";
             });
-            div.setAttribute("style", `background-color: ${color}; padding: ${pixel_size}px; margin: ${spacing}px;`);
+            div.setAttribute(
+                "style", 
+                `
+                    background-color: ${color}; 
+                    padding: ${pixel_size}px; 
+                    margin: ${spacing}px; 
+                    display: flex; 
+                    flex-grow: 1;
+                `
+            );
             grid.appendChild(div);
         }
     }
