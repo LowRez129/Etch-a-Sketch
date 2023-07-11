@@ -8,10 +8,6 @@ function draw() {
     const grid_container = document.querySelector("#grid-container");
     grid_container.setAttribute("style", "display: flex;");
 
-    const grid = document.createElement("div");
-    grid.setAttribute("style", "display: flex;");
-    grid_container.appendChild(grid);
-
     for (let i = 0; i < grid_size.x; i++) {
         const grid = document.createElement("div");
         grid.setAttribute("style", "display: flex; flex-direction: column; flex-grow: 1;");
