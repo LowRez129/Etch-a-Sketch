@@ -1,6 +1,6 @@
 let square_grid = 8;
 let grid_size = {x: square_grid, y: square_grid};
-let pixel_size = 8;
+let pixel_size = 1;
 let spacing = 0.5;
 let color = "green";
 
