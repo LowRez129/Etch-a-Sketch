@@ -21,22 +21,22 @@ function draw() {
             div.classList.add("grid");
 
             div.addEventListener("toggle-gridline", () => {
-                let grid_margin = div.style["margin"];
+                let grid_margin = div.style;
 
-                switch (grid_margin.toString()){
+                switch (grid_margin["margin"].toString()){
                     case "0.5px":
-                        div.style["margin"] = "0px";
+                        grid_margin["margin"] = "0px";
                         break;
                     
                     case "0px":
-                        div.style["margin"] = "0.5px";
+                        grid_margin["margin"] = "0.5px";
                         break;
                     
                 }
             });
 
-            div.addEventListener("mousemove", () => {
-                this.style["background-color"] = "black";
+            div.addEventListener("mousedown", () => {
+                div.style["background-color"] = "black";
             });
 
             div.setAttribute(
@@ -72,14 +72,23 @@ function adjustGridSize() {
 
 function gridlineToggle() {
     const button_gridline = document.querySelector(".button-gridline");
+    let button_color = button_gridline.style;
 
     button_gridline.addEventListener("click", function () {
         const event = new Event("toggle-gridline");
         const div = document.getElementsByClassName("grid");
 
-        document.addEventListener("toggle-gridline", (e) => {
-            //console.log(e);
-        });
+        switch (gridline) {
+            case 0.5:
+                gridline = 0;
+                button_color["background-color"] = "red";
+                break;
+            
+            case 0:
+                gridline = 0.5;
+                button_color["background-color"] = "green";
+                break;
+        }
         
         Array.from(div).forEach((i) => {
             i.dispatchEvent(event);
@@ -87,5 +96,5 @@ function gridlineToggle() {
     });
 }
 
-gridlineToggle();
 adjustGridSize();
+gridlineToggle();
