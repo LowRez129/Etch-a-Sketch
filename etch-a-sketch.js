@@ -18,7 +18,24 @@ function draw() {
         grid_container.appendChild(grid);
         for (let i = 0; i < grid_size.y; i++) {
             const div = document.createElement("div");
-            div.addEventListener("mousemove", function () {
+            div.classList.add("grid");
+
+            div.addEventListener("toggle-gridline", () => {
+                let grid_margin = div.style["margin"];
+
+                switch (grid_margin.toString()){
+                    case "0.5px":
+                        div.style["margin"] = "0px";
+                        break;
+                    
+                    case "0px":
+                        div.style["margin"] = "0.5px";
+                        break;
+                    
+                }
+            });
+
+            div.addEventListener("mousemove", () => {
                 this.style["background-color"] = "black";
             });
 
@@ -57,9 +74,16 @@ function gridlineToggle() {
     const button_gridline = document.querySelector(".button-gridline");
 
     button_gridline.addEventListener("click", function () {
-        //const grid_container = document.querySelector("#grid-container");
-        console.log(gridline);
-        gridline = 0;
+        const event = new Event("toggle-gridline");
+        const div = document.getElementsByClassName("grid");
+
+        document.addEventListener("toggle-gridline", (e) => {
+            //console.log(e);
+        });
+        
+        Array.from(div).forEach((i) => {
+            i.dispatchEvent(event);
+        })
     });
 }
 
