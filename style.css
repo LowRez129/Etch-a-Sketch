@@ -1,7 +1,11 @@
 body {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
     gap: 16px;
+    padding: 16px;
+    margin: 0;
 }
 
 #grid-container {
@@ -10,8 +14,8 @@ body {
     background-color: grey;
 }
 
-#slider-container {
+#ui-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
 }

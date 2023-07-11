@@ -1,7 +1,7 @@
 let square_grid = 8;
 let grid_size = {x: square_grid, y: square_grid};
 let pixel_size = 1;
-let spacing = 0.5;
+let gridline = 0.5;
 let color = "green";
 
 function draw() {
@@ -21,16 +21,18 @@ function draw() {
             div.addEventListener("mousemove", function () {
                 this.style["background-color"] = "black";
             });
+
             div.setAttribute(
                 "style", 
                 `
                     background-color: ${color}; 
                     padding: ${pixel_size}px; 
-                    margin: ${spacing}px; 
+                    margin: ${gridline}px; 
                     display: flex; 
                     flex-grow: 1;
                 `
             );
+
             grid.appendChild(div);
         }
     }
@@ -41,14 +43,25 @@ function adjustGridSize() {
     const slider = document.querySelector(".grid-slider");
     const button = document.querySelector(".button");
 
-    slider_label.textContent = `${slider.value} x ${slider.value}`;
+    slider_label.textContent = `Gridsize: ${slider.value} x ${slider.value}`;
     slider.oninput = function () {
         grid_size.x = this.value;
         grid_size.y = this.value;
-        slider_label.textContent = `${grid_size.x} x ${grid_size.y}`;
+        slider_label.textContent = `Gridsize: ${grid_size.x} x ${grid_size.y}`;
     }
 
     button.addEventListener("click", draw);
 }
 
+function gridlineToggle() {
+    const button_gridline = document.querySelector(".button-gridline");
+
+    button_gridline.addEventListener("click", function () {
+        //const grid_container = document.querySelector("#grid-container");
+        console.log(gridline);
+        gridline = 0;
+    });
+}
+
+gridlineToggle();
 adjustGridSize();
