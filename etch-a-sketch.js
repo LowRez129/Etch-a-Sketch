@@ -8,6 +8,10 @@ function draw() {
     const grid_container = document.querySelector("#grid-container");
     grid_container.setAttribute("style", "display: flex;");
 
+    while (grid_container.hasChildNodes()) {
+        grid_container.removeChild(grid_container.children[0]);
+    }
+
     for (let i = 0; i < grid_size.x; i++) {
         const grid = document.createElement("div");
         grid.setAttribute("style", "display: flex; flex-direction: column; flex-grow: 1;");
@@ -35,21 +39,16 @@ function draw() {
 function adjustGridSize() {
     const slider_label = document.querySelector(".slider-label");
     const slider = document.querySelector(".grid-slider");
-    const grid_container = document.querySelector("#grid-container");
+    const button = document.querySelector(".button");
 
     slider_label.textContent = `${slider.value} x ${slider.value}`;
     slider.oninput = function () {
         grid_size.x = this.value;
         grid_size.y = this.value;
-
         slider_label.textContent = `${grid_size.x} x ${grid_size.y}`;
-
-        while (grid_container.hasChildNodes()) {
-            grid_container.removeChild(grid_container.children[0]);
-        }
-        draw();
     }
+
+    button.addEventListener("click", draw);
 }
 
-draw();
 adjustGridSize();
