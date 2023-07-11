@@ -39,6 +39,7 @@ function draw() {
 function adjustGridSize() {
     const slider_label = document.querySelector(".slider-label");
     const slider = document.querySelector(".grid-slider");
+    const button = document.querySelector(".button");
 
     slider_label.textContent = `${slider.value} x ${slider.value}`;
     slider.oninput = function () {
