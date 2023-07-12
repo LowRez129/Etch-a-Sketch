@@ -35,7 +35,7 @@ function draw() {
                 }
             });
 
-            div.addEventListener("mousedown", () => {
+            div.addEventListener("mousemove", () => {
                 div.style["background-color"] = "black";
             });
 
